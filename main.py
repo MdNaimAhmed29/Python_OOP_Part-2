@@ -129,14 +129,69 @@ print(grandFather.x)
 print(father.x)
 print(son.x)
 
-"""
+
 
 #Abstraction
 
-class Father:
-    def vote(self):
-        print("It is 700000")
+from abc import ABC, abstractmethod
+
+class Father(ABC):
+
+    num1 = 200
+    num2 = 300
+
+    @abstractmethod
+    def add(self):
+        res = self.num1 + self.num2
+        print(f'The sum of {self.num1} and {self.num2} is {res}')
+
+    def sub(self):
+        res = self.num1 - self.num2
+        print(f'The sub of {self.num1} and {self.num2} is {res}')
+
+    def multi(self):
+        res = self.num1 * self.num2
+        print(f'The multiplication of {self.num1} and {self.num2} is {res}')
+
+    def div(self):
+        res = self.num1 // self.num2
+        print(f'The division of {self.num1} and {self.num2} is {res}')
+
 
 class Son(Father):
-    def vote(self):
-        print("stole vote")
+    def add(self):
+        res = self.num1 + self.num2
+        print(f'The sum of {self.num1} and {self.num2} is {res}')
+
+son = Son()
+son.add()
+
+
+
+#Overloading
+
+class Bangladesh:
+
+    #using default params
+    def dhaka(self, a, b=1, c=2, d=3):
+        print(a+b+c+d)
+
+    #variable length arguments
+    def shabag(self, *abc):
+        print(abc)
+
+
+bd = Bangladesh()
+bd.dhaka(10)
+bd.dhaka(10, 10)
+bd.dhaka(10, 10, 10)
+bd.dhaka(10, 10, 10, 10)
+
+bd.shabag("a")
+bd.shabag("a", "b")
+bd.shabag("a", "b", "c")
+bd.shabag("a", "b", "c", "d")
+
+#aoverall topics called polymorphism
+
+"""
