@@ -194,4 +194,92 @@ bd.shabag("a", "b", "c", "d")
 
 #aoverall topics called polymorphism
 
+
+
+#PART_03- static method
+
+class Addition:
+
+    x = 10
+    y = 20
+
+    @staticmethod
+    def add():
+        res = Addition.x + Addition.y
+        print(f'The sum of {Addition.x} + {Addition.y} = {res}')
+
+#no need to create object for static method
+Addition.add()
+
+
+
+#PART_04- access modifier
+# public (call from anywhere)
+# protected = _ (limited place)
+# private = __ (no where)
+
+class Family:
+
+    Husband = 'Naim'
+    _Son = 'XYZ'
+    __Wife = 'Akhi'
+
+    def fun1(self):
+        print(self.Husband)
+        print(self._Son)
+        print(self.__Wife)
+
+class RelativesFamliy:
+
+    def fun2(self):
+        print(self.Husband)
+        print(self._son)
+        #print(self.__Wife)#not accessible only accessible on it own class
+
+
+
+
+family = Family()
+print(family.Husband)
+#print(family._Son)#Not Accessible
+#print(self.__Wife)  # not accessible only accessible on it own class
+
 """
+
+#PART_05- Encapsulation
+
+class DBBL:
+
+    __balance = 0
+
+    def deposit(self, amount):
+
+        if amount <= 0:
+            print('Invalid amount for deposit.')
+
+        else:
+            self.__balance += amount
+            print("Deposit Successful")
+
+
+    def withdraw(self, amount):
+        if amount <= 0 and amount <= self.__balance:
+            print('Insufficient amount for withdraw.')
+
+        else:
+            self.__balance -= amount
+            print("Withdraw Successful")
+
+
+    def check_balance(self):
+        return f'Remaining balance: {self.__balance}'
+
+
+account = DBBL()
+print(account.check_balance())
+
+account.deposit(500)
+print(account.check_balance())
+
+account.withdraw(200)
+print(account.check_balance())
